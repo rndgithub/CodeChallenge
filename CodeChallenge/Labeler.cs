@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace CodeChallenge
@@ -18,35 +19,21 @@ namespace CodeChallenge
 
         public void Label(Instruction instruction)
         {
-            var label = instruction.Text.Substring(0, instruction.Text.IndexOf(':'));
-            instruction.Label = Convert.ToInt32(label);
-            var remainingText = instruction.Text.Substring(instruction.Text.IndexOf(':') + 1).Trim();
-
-            var instructionType = remainingText.Substring(0, remainingText.IndexOf(' ')).Trim();
+            var instructionType = Regex.Matches(instruction.Text, @"[^\d\W]+")[0].Value;
             instruction.InstructionType = instructionTypeFactory.GetInstructionType(instructionType);
-            remainingText = remainingText.Substring(remainingText.IndexOf(' ')).Trim();
+
+            var labels = Regex.Matches(instruction.Text, "[0-9]+");
+            instruction.Label = Convert.ToInt32(labels[0].Value);
 
             if (instruction.InstructionType is InstructionTypes.Value)
             {
-                instruction.InstructionValue = Convert.ToInt32(remainingText);
+                instruction.InstructionValue = Convert.ToInt32(labels[1].Value);
                 return;
             }
 
-            while (true)
+            for (int i = 1; i < labels.Count; i++)
             {
-                var indexOf = remainingText.IndexOf(' ');
-
-                if (indexOf > 0)
-                    label = remainingText.Substring(0, indexOf).Trim();
-                else
-                    label = remainingText.Substring(0).Trim();
-
-                instruction.Labels.Add(Convert.ToInt32(label));
-
-                if (indexOf <= 0)
-                    break;
-
-                remainingText = remainingText.Substring(remainingText.IndexOf(' ')).Trim();
+                instruction.Labels.Add(Convert.ToInt32(labels[i].Value));
             }
 
         }
