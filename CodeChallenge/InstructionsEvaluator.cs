@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CodeChallenge.InstructionParsers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,13 +9,13 @@ namespace CodeChallenge
 {
     public class InstructionsEvaluator
     {
-        private readonly Labeler labeler;
+        private readonly IInstructionParser instructionParser;
         private readonly Valuer valuer;
 
 
         public InstructionsEvaluator()
         {
-            labeler = new Labeler();
+            instructionParser = new StandardParser();
             valuer = new Valuer();
 
         }
@@ -47,7 +48,7 @@ namespace CodeChallenge
             foreach (var line in instructionsInput)
             {
                 var instruction = new Instruction(line);
-                labeler.Label(instruction);
+                instructionParser.Parse(instruction);
                 instructions.Add(instruction);
             }
 

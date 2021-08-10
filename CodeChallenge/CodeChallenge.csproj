@@ -52,7 +52,6 @@
     <Compile Include="InstructionTypes\InstructionTypeFactory.cs" />
     <Compile Include="InstructionTypes\Mult.cs" />
     <Compile Include="InstructionTypes\Value.cs" />
-    <Compile Include="Labeler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Valuer.cs" />
