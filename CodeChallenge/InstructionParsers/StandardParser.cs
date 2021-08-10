@@ -20,7 +20,7 @@ namespace CodeChallenge.InstructionParsers
             var instructionType = Regex.Matches(instruction.Text, @"[^\d\W]+")[0].Value;
             instruction.InstructionType = instructionTypeFactory.GetInstructionType(instructionType);
 
-            var labels = Regex.Matches(instruction.Text, "[0-9]+");
+            var labels = Regex.Matches(instruction.Text, "-?[0-9]+");
             instruction.Label = Convert.ToInt32(labels[0].Value);
 
             if (instruction.InstructionType is InstructionTypes.Value)
