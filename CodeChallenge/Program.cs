@@ -26,8 +26,6 @@ namespace CodeChallenge
             Console.WriteLine($"Result: {result}");
             Console.WriteLine($"Duration: {watcher.Elapsed}");
             Console.ReadLine();
-
         }
-
     }
 }

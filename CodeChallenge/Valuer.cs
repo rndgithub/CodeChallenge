@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,25 +11,36 @@ namespace CodeChallenge
     {
         public void Value(Dictionary<int,Instruction> instructions)
         {
-            while (instructions.ElementAt(0).Value.InstructionValue==null)
-            {
-                foreach (var inst in instructions.Values.OrderBy(x => x. Instructions.Count()))
-                {
-                    Value(inst);
-                }
-            }
+
+            Value(instructions, instructions.Values.ElementAt(0));
+
+            //foreach (var inst in instructions.Values)
+            //{
+            //    foreach (var subInst in inst.Instructions)
+            //    {
+            //        Console.WriteLine($"    {inst.Label} -> {subInst.Label};");
+            //    }
+            //}
+
 
         }
-        public void Value(Instruction instruction)
+
+        private void Value(Dictionary<int,Instruction> instructions, Instruction instruction)
         {
-            if (instruction.InstructionValue != null || instruction.InstructionType is InstructionTypes.Value)
+            if (instruction.InstructionValue != null)
                 return;
 
-            if (instruction.Instructions.All(x => x.InstructionValue != null))
+            var watcher = Stopwatch.StartNew();
+
+            foreach (var subInst in instruction.Instructions)
             {
-                instruction.InstructionValue = instruction.InstructionType.Value(instruction, instruction.Instructions);
+                Value(instructions, subInst);
             }
 
+            instruction.InstructionValue = instruction.InstructionType.Value(instruction, instruction.Instructions);
+
+            watcher.Stop();
+            Console.WriteLine($"Label {instruction.Label} took {watcher.Elapsed}");
         }
 
     }

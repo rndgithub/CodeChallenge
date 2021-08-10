@@ -12,7 +12,7 @@ namespace CodeChallenge.InstructionTypes
 
         public double Value(Instruction instruction, List<Instruction> subInstructions)
         {
-            return subInstructions.Sum(x => x.InstructionValue ?? 0);
+            return subInstructions.Sum(x => x.InstructionValue.Value);
         }
     }
 }
