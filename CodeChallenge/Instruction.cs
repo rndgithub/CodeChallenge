@@ -31,7 +31,7 @@ namespace CodeChallenge
         public List<int> Labels { get; set; }
         public List<Instruction> SubInstructions { get; set; }
 
-        public double? InstructionValue { get; set; }
+        public decimal? InstructionValue { get; set; }
 
         public string Text { get; set; }
 

@@ -20,7 +20,7 @@ namespace CodeChallenge
 
         }
 
-        public double Evaluate(string[] instructionsInput)
+        public decimal Evaluate(string[] instructionsInput)
         {
             var instructions = GetInstructions(instructionsInput);
 

@@ -9,6 +9,6 @@ namespace CodeChallenge.InstructionTypes
     public interface IInstructionType
     {
         string Name { get; }
-        double Value(Instruction instruction);
+        decimal Value(Instruction instruction);
     }
 }

@@ -10,7 +10,7 @@ namespace CodeChallenge.InstructionTypes
     {
         public string Name => "Add";
 
-        public double Value(Instruction instruction)
+        public decimal Value(Instruction instruction)
         {
             return instruction.SubInstructions.Sum(x => x.InstructionValue.Value);
         }

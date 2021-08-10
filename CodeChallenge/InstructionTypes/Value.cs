@@ -10,9 +10,9 @@ namespace CodeChallenge.InstructionTypes
     {
         public string Name => "Value";
 
-        double IInstructionType.Value(Instruction instruction)
+        decimal IInstructionType.Value(Instruction instruction)
         {
-            return instruction.InstructionValue ?? 0;
+            return instruction.InstructionValue.Value;
         }
     }
 }
