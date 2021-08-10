@@ -27,7 +27,7 @@ namespace CodeChallenge
             AddSubInstructions(instructions);
 
             valuer.Value(instructions);
-            return instructions.ElementAt(0).Value.InstructionValue ?? 0;
+            return instructions.ElementAt(0).Value.InstructionValue.Value;
         }
 
         private static void AddSubInstructions(Dictionary<int,Instruction> instructions)
