@@ -18,7 +18,7 @@ namespace CodeChallenge
 
             var lines = File.ReadAllLines(@"c:\temp\input.txt");
             //var lines = File.ReadAllLines(@"c:\temp\input example.txt");
-            var instructionsEvaluator = new InstructionsEvaluator();
+            var instructionsEvaluator = new InstructionEvaluator();
             var result = instructionsEvaluator.Evaluate(lines);
 
             Console.WriteLine($"Result: {result}");

@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace CodeChallenge
 {
-    public class InstructionsEvaluator
+    public class InstructionEvaluator
     {
         private readonly IInstructionParser instructionParser;
         private readonly Valuer valuer;
 
 
-        public InstructionsEvaluator()
+        public InstructionEvaluator()
         {
             instructionParser = new StandardParser();
             valuer = new Valuer();

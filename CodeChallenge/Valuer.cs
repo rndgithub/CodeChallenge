@@ -10,14 +10,12 @@ namespace CodeChallenge
     {
         public void Value(List<Instruction> instructions)
         {
-            var iterations = 1;
             while (instructions.Any(x => x.InstructionValue == null))
             {
                 foreach (var inst in instructions.OrderBy(x => x.Instructions.Count()))
                 {
                     Value(inst);
                 }
-                iterations++;
             }
 
         }

@@ -46,7 +46,7 @@
     <Compile Include="Instruction.cs" />
     <Compile Include="InstructionParsers\IInstructionParser.cs" />
     <Compile Include="InstructionParsers\StandardParser.cs" />
-    <Compile Include="InstructionsEvaluator.cs" />
+    <Compile Include="InstructionEvaluator.cs" />
     <Compile Include="InstructionTypes\Add.cs" />
     <Compile Include="InstructionTypes\IInstructionType.cs" />
     <Compile Include="InstructionTypes\InstructionTypeFactory.cs" />
