@@ -8,11 +8,11 @@ namespace CodeChallenge
 {
     public class Valuer
     {
-        public void Value(List<Instruction> instructions)
+        public void Value(Dictionary<int,Instruction> instructions)
         {
-            while (instructions.Any(x => x.InstructionValue == null))
+            while (instructions.ElementAt(0).Value.InstructionValue==null)
             {
-                foreach (var inst in instructions.OrderBy(x => x.Instructions.Count()))
+                foreach (var inst in instructions.Values.OrderBy(x => x. Instructions.Count()))
                 {
                     Value(inst);
                 }
@@ -21,10 +21,10 @@ namespace CodeChallenge
         }
         public void Value(Instruction instruction)
         {
-            if (instruction.InstructionValue != null)
+            if (instruction.InstructionValue != null || instruction.InstructionType is InstructionTypes.Value)
                 return;
 
-            if (instruction.Instructions.Count > 0 && instruction.Instructions.All(x => x.InstructionValue != null))
+            if (instruction.Instructions.All(x => x.InstructionValue != null))
             {
                 instruction.InstructionValue = instruction.InstructionType.Value(instruction, instruction.Instructions);
             }

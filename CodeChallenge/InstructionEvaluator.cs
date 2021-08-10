@@ -22,34 +22,34 @@ namespace CodeChallenge
 
         public double Evaluate(string[] instructionsInput)
         {
-            List<Instruction> instructions = GetInstructions(instructionsInput);
+            var instructions = GetInstructions(instructionsInput);
 
             AddSubInstructions(instructions);
 
             valuer.Value(instructions);
-            return instructions[0].InstructionValue ?? 0;
+            return instructions.ElementAt(0).Value.InstructionValue ?? 0;
         }
 
-        private static void AddSubInstructions(List<Instruction> instructions)
+        private static void AddSubInstructions(Dictionary<int,Instruction> instructions)
         {
-            foreach (var instruction in instructions)
+            foreach (var instruction in instructions.Values)
             {
                 foreach (var label in instruction.Labels)
                 {
-                    var subInstruction = instructions.First(x => x.Label == label);
+                    var subInstruction = instructions[label];
                     instruction.Instructions.Add(subInstruction);
                 }
             }
         }
 
-        private List<Instruction> GetInstructions(string[] instructionsInput)
+        private Dictionary<int,Instruction> GetInstructions(string[] instructionsInput)
         {
-            List<Instruction> instructions = new List<Instruction>();
+            var instructions = new Dictionary<int, Instruction>();
             foreach (var line in instructionsInput)
             {
                 var instruction = new Instruction(line);
                 instructionParser.Parse(instruction);
-                instructions.Add(instruction);
+                instructions.Add(instruction.Label, instruction);
             }
 
             return instructions;
