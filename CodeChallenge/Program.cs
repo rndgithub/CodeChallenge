@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -14,15 +15,16 @@ namespace CodeChallenge
         {
 
 
-            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff", CultureInfo.InvariantCulture));
+            var watcher = Stopwatch.StartNew();
 
             var lines = File.ReadAllLines(@"c:\temp\input.txt");
             //var lines = File.ReadAllLines(@"c:\temp\input example.txt");
             var instructionsEvaluator = new InstructionEvaluator();
             var result = instructionsEvaluator.Evaluate(lines);
 
+            watcher.Stop();
             Console.WriteLine($"Result: {result}");
-            Console.WriteLine(DateTime.Now.ToString("hh:mm:ss.fff", CultureInfo.InvariantCulture));
+            Console.WriteLine($"Duration: {watcher.Elapsed}");
             Console.ReadLine();
 
         }
