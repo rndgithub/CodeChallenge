@@ -10,9 +10,9 @@ namespace CodeChallenge.InstructionTypes
     {
         public string Name => "Mult";
 
-        public double Value(Instruction instruction, List<Instruction> subInstructions)
+        public double Value(Instruction instruction)
         {
-            return instruction.Instructions.Aggregate(1.0, (product, subInst) => product * subInst.InstructionValue.Value);
+            return instruction.SubInstructions.Aggregate(1.0, (product, subInst) => product * subInst.InstructionValue.Value);
         }
     }
 }

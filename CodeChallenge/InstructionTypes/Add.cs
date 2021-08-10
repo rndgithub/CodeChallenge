@@ -10,9 +10,9 @@ namespace CodeChallenge.InstructionTypes
     {
         public string Name => "Add";
 
-        public double Value(Instruction instruction, List<Instruction> subInstructions)
+        public double Value(Instruction instruction)
         {
-            return subInstructions.Sum(x => x.InstructionValue.Value);
+            return instruction.SubInstructions.Sum(x => x.InstructionValue.Value);
         }
     }
 }

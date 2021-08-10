@@ -11,7 +11,7 @@ namespace CodeChallenge
     {
         public Instruction()
         {
-            Instructions = new List<Instruction>();
+            SubInstructions = new List<Instruction>();
             Labels = new List<int>();
         }
 
@@ -29,7 +29,7 @@ namespace CodeChallenge
 
         public int Label { get; set; }
         public List<int> Labels { get; set; }
-        public List<Instruction> Instructions { get; set; }
+        public List<Instruction> SubInstructions { get; set; }
 
         public double? InstructionValue { get; set; }
 

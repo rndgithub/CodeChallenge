@@ -10,7 +10,7 @@ namespace CodeChallenge.InstructionTypes
     {
         public string Name => "Value";
 
-        double IInstructionType.Value(Instruction instruction, List<Instruction> instructions)
+        double IInstructionType.Value(Instruction instruction)
         {
             return instruction.InstructionValue ?? 0;
         }

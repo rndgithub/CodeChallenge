@@ -11,18 +11,7 @@ namespace CodeChallenge
     {
         public void Value(Dictionary<int,Instruction> instructions)
         {
-
             Value(instructions, instructions.Values.ElementAt(0));
-
-            //foreach (var inst in instructions.Values)
-            //{
-            //    foreach (var subInst in inst.Instructions)
-            //    {
-            //        Console.WriteLine($"    {inst.Label} -> {subInst.Label};");
-            //    }
-            //}
-
-
         }
 
         private void Value(Dictionary<int,Instruction> instructions, Instruction instruction)
@@ -32,12 +21,12 @@ namespace CodeChallenge
 
             var watcher = Stopwatch.StartNew();
 
-            foreach (var subInst in instruction.Instructions)
+            foreach (var subInst in instruction.SubInstructions)
             {
                 Value(instructions, subInst);
             }
 
-            instruction.InstructionValue = instruction.InstructionType.Value(instruction, instruction.Instructions);
+            instruction.InstructionValue = instruction.InstructionType.Value(instruction);
 
             watcher.Stop();
             Console.WriteLine($"Label {instruction.Label} took {watcher.Elapsed}");

@@ -37,7 +37,7 @@ namespace CodeChallenge
                 foreach (var label in instruction.Labels)
                 {
                     var subInstruction = instructions[label];
-                    instruction.Instructions.Add(subInstruction);
+                    instruction.SubInstructions.Add(subInstruction);
                 }
             }
         }

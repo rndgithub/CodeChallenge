@@ -9,6 +9,6 @@ namespace CodeChallenge.InstructionTypes
     public interface IInstructionType
     {
         string Name { get; }
-        double Value(Instruction instruction, List<Instruction> SubInstructions);
+        double Value(Instruction instruction);
     }
 }
