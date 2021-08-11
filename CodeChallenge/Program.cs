@@ -17,8 +17,8 @@ namespace CodeChallenge
 
             var watcher = Stopwatch.StartNew();
 
-            var lines = File.ReadAllLines(@"c:\temp\input.txt");
-            //var lines = File.ReadAllLines(@"c:\temp\input example.txt");
+            var lines = File.ReadAllLines(Path.Combine(Environment.CurrentDirectory, @"..\..\..\input.txt"));
+            //var lines = File.ReadAllLines(Path.Combine(Environment.CurrentDirectory, @"..\..\..\input example.txt"));
             var instructionsEvaluator = new InstructionEvaluator();
             var result = instructionsEvaluator.Evaluate(lines);
 
